@@ -96,13 +96,15 @@ public class ObliczTrase {
         Utilities.drukujPlaner("Koszt za paliwo wyniesie: " + zuzycie*(dystans/100)*(litr) + "zł", 50);
         Utilities.drukujlinie("-", 80);
         if (pasazerowie == 0) {
-            Utilities.drukujPlaner("Bez pasażerów koszt wyniesie: " + (dystans/100)*(litr) + "zł", 50);
+            Utilities.drukujPlaner("Bez pasażerów koszt wyniesie: " + zuzycie*(dystans/100)*(litr) + "zł", 50);
             Utilities.drukujlinie("*", 80);
             System.out.println();
             Utilities.drukujPlaner("Czy chcesz zapisać dane dot. trasy? (tak/nie)", 50);
             decyzja = scanner.nextLine();
             if (decyzja.equalsIgnoreCase("tak")){
-                boolean zapisano = Utilities.zapisDanych("Zapis.txt", dane);
+                System.out.println("Podaj nazwę pliku: ");
+                String nazwaUzytkownika = scanner.nextLine();
+                boolean zapisano = Utilities.zapisDanych(nazwaUzytkownika + "Trasa", dane);
                 if (zapisano) {
                     System.out.println("Pomyślnie zapisano dane!");
                 } else {
@@ -119,7 +121,7 @@ public class ObliczTrase {
             if (decyzja.equalsIgnoreCase("tak")) {
                 System.out.println("Podaj nazwę pliku: ");
                 String nazwaUzytkownika = scanner.nextLine();
-                boolean zapisano = Utilities.zapisDanych(nazwaUzytkownika, dane);
+                boolean zapisano = Utilities.zapisDanych(nazwaUzytkownika + "Trasa", dane);
                 if (zapisano) {
                     System.out.println("Pomyślnie zapisano dane!");
                 } else {
